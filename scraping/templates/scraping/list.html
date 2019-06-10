@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}  Список вакансий             {% endblock title %}
+{% block content %}
+<div class="row my-5">
+    <div class="col">
+        <h1 class="my-5 ">Список ваканский</h1>
+    </div>
+</div>
+
+<div class="row">
+    {% if jobs %}
+        <h2>Вакансии по запросу: город  {{city}} , специальность  {{speciality}}</h2>
+        <hr><br/><br/>
+        {% for job in jobs %}
+            <div class="col-12 text-left">
+                <h4> <a href='{{job.url}}'>{{job.title}}</a> </h4>
+                <p>{{job.description}}</p><br/>
+                <p>Вакансия от компании: {{job.company}}<small>. Дата размещения вакансии - {{job.timestamp| date:"SHORT_DATE_FORMAT"}}</small></p>
+                <hr><br/>
+            </div>
+        {% endfor %}
+    {% else %}
+    <div class="col-12">
+        <h2>По вашему запросу ничего не найдено!</h2>
+    </div>
+    {% endif %}
+</div>
+<div class="row"><div class="col">
+    <form method="get" action="">
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Показать</button>
+    </form>
+</div></div>
+{% endblock content %}

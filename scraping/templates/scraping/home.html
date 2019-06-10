@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}  Список вакансий             {% endblock title %}
+{% block content %}
+<div class="row my-5">
+    <div class="col-md-10 mx-auto">
+        <h1 class="my-5 ">Сервис по сбору ваканский</h1>
+        <p>Ваканскии размещены на большом количестве сайтов по поиску работы.Наш сервис анализирует несколько самых топовых сайтов на предмет вакансий, согласно запросов от наших подписчиков</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <form method="get" action="{% url 'list'%}">
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Показать</button>
+    </form>
+</div></div>
+{% endblock content %}
